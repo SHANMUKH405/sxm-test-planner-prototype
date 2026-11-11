@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { api } from "@/lib/api";
+import { Status } from "@/components/status";
+
+export default async function RunsPage(){const runs=await api.runs();return <><header className="pageHead"><div><div className="eyebrow">Evidence</div><h1>Run history</h1><p className="subtitle">Each cycle records its tests, target, source revision, result, and artifacts.</p></div><Link className="button" href="/runs/new">Create cycle</Link></header><div className="tableWrap"><table className="table"><thead><tr><th>Run</th><th>Status</th><th>Revision</th><th>Tests</th><th>Created</th></tr></thead><tbody>{runs.map(run=><tr key={run.id}><td><Link href={`/runs/${run.id}`}><strong>{run.name}</strong></Link><div className="meta">{run.id}</div></td><td><Status value={run.status}/></td><td>{run.source_revision}</td><td>{run.test_ids.length}</td><td>{new Date(run.created_at).toLocaleString()}</td></tr>)}</tbody></table>{runs.length===0&&<div className="empty">No runs yet.</div>}</div></>}

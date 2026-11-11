@@ -1,0 +1,26 @@
+[project]
+name = "sxm-test-planner-api"
+version = "0.1.0"
+description = "Simulator-first API for the SXM Test Planner prototype"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "fastapi==0.162.4",
+  "uvicorn[standard]>=0.38,<1",
+  "pydantic-settings>=2.10,<3",
+  "robotframework>=7.4,<8",
+]
+
+[dependency-groups]
+dev = [
+  "httpx>=0.28,<1",
+  "pytest>=8,<9",
+  "pytest-asyncio>=1,<2",
+  "ruff>=0.14,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"

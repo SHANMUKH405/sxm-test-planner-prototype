@@ -1,0 +1,4 @@
+import { api } from "@/lib/api";
+import { Status } from "@/components/status";
+
+export default async function TargetsPage(){const targets=await api.targets();return <><header className="pageHead"><div><div className="eyebrow">Capabilities</div><h1>Execution targets</h1><p className="subtitle">The planner matches test requirements to target capabilities before enabling Run.</p></div></header><div className="grid">{targets.map(target=><article className="card" key={target.id}><div style={{display:"flex",justifyContent:"space-between"}}><Status value={target.status}/><span className="chip emu">{target.driver}</span></div><h3>{target.name}</h3><p className="meta">{target.description}</p><div className="chips">{target.capabilities.map(cap=><span className="chip" key={cap}>{cap}</span>)}</div></article>)}</div></>}

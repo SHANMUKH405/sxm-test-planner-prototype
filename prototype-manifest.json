@@ -1,0 +1,8 @@
+{
+  "name": "SXM Test Planner Prototype",
+  "frontend": "Next.js App Router + TypeScript",
+  "backend": "FastAPI + SQLite",
+  "default_catalog": "demo",
+  "default_runner": "simulate",
+  "files": 47
+}
